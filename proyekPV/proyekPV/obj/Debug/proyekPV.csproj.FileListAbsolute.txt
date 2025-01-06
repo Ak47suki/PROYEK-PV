@@ -1,0 +1,44 @@
+C:\Users\lukas\source\repos\proyekPV\proyekPV\bin\Debug\proyekPV.exe.config
+C:\Users\lukas\source\repos\proyekPV\proyekPV\bin\Debug\proyekPV.exe
+C:\Users\lukas\source\repos\proyekPV\proyekPV\bin\Debug\proyekPV.pdb
+C:\Users\lukas\source\repos\proyekPV\proyekPV\obj\Debug\proyekPV.csproj.AssemblyReference.cache
+C:\Users\lukas\source\repos\proyekPV\proyekPV\obj\Debug\proyekPV.LoginForm.resources
+C:\Users\lukas\source\repos\proyekPV\proyekPV\obj\Debug\proyekPV.Properties.Resources.resources
+C:\Users\lukas\source\repos\proyekPV\proyekPV\obj\Debug\proyekPV.csproj.GenerateResource.cache
+C:\Users\lukas\source\repos\proyekPV\proyekPV\obj\Debug\proyekPV.csproj.CoreCompileInputs.cache
+C:\Users\lukas\source\repos\proyekPV\proyekPV\obj\Debug\proyekPV.exe
+C:\Users\lukas\source\repos\proyekPV\proyekPV\obj\Debug\proyekPV.pdb
+C:\Users\lukas\source\repos\proyekPV\proyekPV\obj\Debug\proyekPV.BarangForm.resources
+C:\Users\lukas\source\repos\proyekPV\proyekPV\obj\Debug\proyekPV.MainForm.resources
+C:\Users\lukas\source\repos\proyekPV\proyekPV\bin\Debug\MySql.Data.dll
+C:\Users\lukas\source\repos\proyekPV\proyekPV\obj\Debug\proyekPV.csproj.CopyComplete
+C:\Users\lukas\source\repos\proyekPV\proyekPV\bin\Debug\System.Memory.dll
+C:\Users\lukas\source\repos\proyekPV\proyekPV\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\lukas\source\repos\proyekPV\proyekPV\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\lukas\source\repos\proyekPV\proyekPV\bin\Debug\System.Buffers.dll
+C:\Users\lukas\source\repos\proyekPV\proyekPV\bin\Debug\MySql.Data.xml
+C:\Users\lukas\source\repos\proyekPV\proyekPV\obj\Debug\proyekPV.BuyerForm.resources
+C:\Users\lukas\source\repos\proyekPV\proyekPV\obj\Debug\proyekPV.RoleForm.resources
+C:\Users\lukas\source\repos\proyekPV\proyekPV\obj\Debug\proyekPV.SimulasiForm.resources
+D:\db proyek PV\proyekPV\proyekPV\bin\Debug\proyekPV.exe.config
+D:\db proyek PV\proyekPV\proyekPV\bin\Debug\proyekPV.exe
+D:\db proyek PV\proyekPV\proyekPV\bin\Debug\proyekPV.pdb
+D:\db proyek PV\proyekPV\proyekPV\bin\Debug\System.Memory.dll
+D:\db proyek PV\proyekPV\proyekPV\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\db proyek PV\proyekPV\proyekPV\bin\Debug\System.Numerics.Vectors.dll
+D:\db proyek PV\proyekPV\proyekPV\bin\Debug\System.Buffers.dll
+D:\db proyek PV\proyekPV\proyekPV\bin\Debug\MySql.Data.xml
+D:\db proyek PV\proyekPV\proyekPV\obj\Debug\proyekPV.csproj.AssemblyReference.cache
+D:\db proyek PV\proyekPV\proyekPV\obj\Debug\proyekPV.BarangForm.resources
+D:\db proyek PV\proyekPV\proyekPV\obj\Debug\proyekPV.BuyerForm.resources
+D:\db proyek PV\proyekPV\proyekPV\obj\Debug\proyekPV.LoginForm.resources
+D:\db proyek PV\proyekPV\proyekPV\obj\Debug\proyekPV.MainForm.resources
+D:\db proyek PV\proyekPV\proyekPV\obj\Debug\proyekPV.Properties.Resources.resources
+D:\db proyek PV\proyekPV\proyekPV\obj\Debug\proyekPV.RoleForm.resources
+D:\db proyek PV\proyekPV\proyekPV\obj\Debug\proyekPV.SimulasiForm.resources
+D:\db proyek PV\proyekPV\proyekPV\obj\Debug\proyekPV.csproj.GenerateResource.cache
+D:\db proyek PV\proyekPV\proyekPV\obj\Debug\proyekPV.csproj.CoreCompileInputs.cache
+D:\db proyek PV\proyekPV\proyekPV\obj\Debug\proyekPV.csproj.CopyComplete
+D:\db proyek PV\proyekPV\proyekPV\obj\Debug\proyekPV.exe
+D:\db proyek PV\proyekPV\proyekPV\obj\Debug\proyekPV.pdb
+D:\db proyek PV\proyekPV\proyekPV\obj\Debug\proyekPV.CartForm.resources
