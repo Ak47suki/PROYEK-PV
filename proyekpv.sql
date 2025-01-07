@@ -58,6 +58,35 @@ insert  into `barang`(`barang_id`,`nama_barang`,`jumlah_barang`,`harga_barang`,`
 ('BRG025','intel I3 12100f',88,1300000,'Processor'),
 ('BRG026','AMD Ryzen 7 7800G',77,4200000,'Processor');
 
+/*Table structure for table `cart` */
+
+DROP TABLE IF EXISTS `cart`;
+
+CREATE TABLE `cart` (
+  `No` int(255) NOT NULL AUTO_INCREMENT,
+  `Barang_ID` char(255) DEFAULT NULL,
+  `Barang_nama` char(244) DEFAULT NULL,
+  `barang_harga` int(244) DEFAULT NULL,
+  `barang_qty` int(244) DEFAULT NULL,
+  KEY `Cart_ID` (`No`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `cart` */
+
+insert  into `cart`(`No`,`Barang_ID`,`Barang_nama`,`barang_harga`,`barang_qty`) values 
+(5,'BRG010','MSI A650GF',1750000,1);
+
+/*Table structure for table `dtrans` */
+
+DROP TABLE IF EXISTS `dtrans`;
+
+CREATE TABLE `dtrans` (
+  `dtrans_id` char(255) DEFAULT NULL,
+  `username_id` char(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `dtrans` */
+
 /*Table structure for table `htrans` */
 
 DROP TABLE IF EXISTS `htrans`;
@@ -72,6 +101,7 @@ CREATE TABLE `htrans` (
   `jumlah` bigint(255) DEFAULT NULL,
   `grand_total` bigint(255) DEFAULT NULL,
   `status` varchar(100) DEFAULT NULL,
+  `dtrans_id` char(255) DEFAULT NULL,
   PRIMARY KEY (`htrans_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
