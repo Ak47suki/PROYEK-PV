@@ -37,8 +37,8 @@ namespace proyekPV
         {
             try
             {
-                // Query untuk mengambil semua data dari tabel barang
-                string query = "SELECT * FROM barang";
+                // Query untuk mengambil semua data dari tabel barang termasuk kategori
+                string query = "SELECT barang_id, nama_barang, kategori_barang, harga_barang, jumlah_barang FROM barang";
 
                 // Membuat DataTable untuk menyimpan data
                 dt = new DataTable();
@@ -62,14 +62,10 @@ namespace proyekPV
                 // Menampilkan data ke DataGridView
                 dgvBarang.DataSource = dt;
 
-                // Menyembunyikan kolom barang_id
+                // Menyembunyikan kolom barang_id (jika diperlukan)
                 if (dgvBarang.Columns["barang_id"] != null)
                 {
                     dgvBarang.Columns["barang_id"].Visible = false;
-                }
-                if (dgvBarang.Columns["jumlah_barang"] != null)
-                {
-                    dgvBarang.Columns["jumlah_barang"].Visible = false;
                 }
             }
             catch (Exception ex)
@@ -86,6 +82,8 @@ namespace proyekPV
                 }
             }
         }
+
+
 
 
         private string[] GetSelectedBarang(HashSet<string> excludedIds)

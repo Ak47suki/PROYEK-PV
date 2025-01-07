@@ -42,3 +42,24 @@ D:\db proyek PV\proyekPV\proyekPV\obj\Debug\proyekPV.csproj.CopyComplete
 D:\db proyek PV\proyekPV\proyekPV\obj\Debug\proyekPV.exe
 D:\db proyek PV\proyekPV\proyekPV\obj\Debug\proyekPV.pdb
 D:\db proyek PV\proyekPV\proyekPV\obj\Debug\proyekPV.CartForm.resources
+E:\20. Kuliah semester 7\ProyekPV\PROYEK-PV\proyekPV\proyekPV\bin\Debug\proyekPV.exe.config
+E:\20. Kuliah semester 7\ProyekPV\PROYEK-PV\proyekPV\proyekPV\bin\Debug\proyekPV.exe
+E:\20. Kuliah semester 7\ProyekPV\PROYEK-PV\proyekPV\proyekPV\bin\Debug\proyekPV.pdb
+E:\20. Kuliah semester 7\ProyekPV\PROYEK-PV\proyekPV\proyekPV\bin\Debug\System.Memory.dll
+E:\20. Kuliah semester 7\ProyekPV\PROYEK-PV\proyekPV\proyekPV\bin\Debug\System.Threading.Tasks.Extensions.dll
+E:\20. Kuliah semester 7\ProyekPV\PROYEK-PV\proyekPV\proyekPV\bin\Debug\System.Numerics.Vectors.dll
+E:\20. Kuliah semester 7\ProyekPV\PROYEK-PV\proyekPV\proyekPV\bin\Debug\System.Buffers.dll
+E:\20. Kuliah semester 7\ProyekPV\PROYEK-PV\proyekPV\proyekPV\obj\Debug\proyekPV.csproj.AssemblyReference.cache
+E:\20. Kuliah semester 7\ProyekPV\PROYEK-PV\proyekPV\proyekPV\obj\Debug\proyekPV.BarangForm.resources
+E:\20. Kuliah semester 7\ProyekPV\PROYEK-PV\proyekPV\proyekPV\obj\Debug\proyekPV.BuyerForm.resources
+E:\20. Kuliah semester 7\ProyekPV\PROYEK-PV\proyekPV\proyekPV\obj\Debug\proyekPV.CartForm.resources
+E:\20. Kuliah semester 7\ProyekPV\PROYEK-PV\proyekPV\proyekPV\obj\Debug\proyekPV.LoginForm.resources
+E:\20. Kuliah semester 7\ProyekPV\PROYEK-PV\proyekPV\proyekPV\obj\Debug\proyekPV.MainForm.resources
+E:\20. Kuliah semester 7\ProyekPV\PROYEK-PV\proyekPV\proyekPV\obj\Debug\proyekPV.Properties.Resources.resources
+E:\20. Kuliah semester 7\ProyekPV\PROYEK-PV\proyekPV\proyekPV\obj\Debug\proyekPV.RoleForm.resources
+E:\20. Kuliah semester 7\ProyekPV\PROYEK-PV\proyekPV\proyekPV\obj\Debug\proyekPV.SimulasiForm.resources
+E:\20. Kuliah semester 7\ProyekPV\PROYEK-PV\proyekPV\proyekPV\obj\Debug\proyekPV.csproj.GenerateResource.cache
+E:\20. Kuliah semester 7\ProyekPV\PROYEK-PV\proyekPV\proyekPV\obj\Debug\proyekPV.csproj.CoreCompileInputs.cache
+E:\20. Kuliah semester 7\ProyekPV\PROYEK-PV\proyekPV\proyekPV\obj\Debug\proyekPV.csproj.CopyComplete
+E:\20. Kuliah semester 7\ProyekPV\PROYEK-PV\proyekPV\proyekPV\obj\Debug\proyekPV.exe
+E:\20. Kuliah semester 7\ProyekPV\PROYEK-PV\proyekPV\proyekPV\obj\Debug\proyekPV.pdb
