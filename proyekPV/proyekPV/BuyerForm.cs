@@ -520,6 +520,8 @@ namespace proyekPV
 
         private void btnSimul_Click(object sender, EventArgs e)
         {
+
+
             this.Hide();
             SimulasiForm simulasiForm = new SimulasiForm();
             simulasiForm.ShowDialog();
