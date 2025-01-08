@@ -62,6 +62,9 @@ namespace proyekPV
                     dgvCart.Columns["barang_id"].Visible = false;
                 }
 
+                // Add or refresh the "No" column for row numbers
+                AddRowNumberColumn();
+
                 // Adjust the DataGridView size to match its content
                 AdjustDataGridViewSize();
             }
@@ -79,6 +82,32 @@ namespace proyekPV
                 }
             }
         }
+
+        private void AddRowNumberColumn()
+        {
+            // Check if the "No" column already exists
+            if (!dgvCart.Columns.Contains("No"))
+            {
+                // Create a new column for row numbers
+                DataGridViewTextBoxColumn rowNumberColumn = new DataGridViewTextBoxColumn
+                {
+                    Name = "No",
+                    HeaderText = "No",
+                    ReadOnly = true,
+                    Width = 50 // Set column width (optional)
+                };
+
+                // Insert the column at the first position (index 0)
+                dgvCart.Columns.Insert(0, rowNumberColumn);
+            }
+
+            // Populate the "No" column with row numbers
+            for (int i = 0; i < dgvCart.Rows.Count; i++)
+            {
+                dgvCart.Rows[i].Cells["No"].Value = (i + 1).ToString();
+            }
+        }
+
 
         private void AdjustDataGridViewSize()
         {

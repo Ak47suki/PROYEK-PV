@@ -56,32 +56,31 @@ namespace proyekPV
         {
             try
             {
-                // Query untuk mengambil semua data dari tabel barang
-                string query = "SELECT barang_id, nama_barang, kategori_barang, harga_barang, jumlah_barang FROM barang";
+                // Query to retrieve relevant data from the 'barang' table
+                string query = "SELECT barang_id, nama_barang, kategori_barang, harga_barang FROM barang";
 
-                // Membuat DataTable untuk menyimpan data
+                // Create a DataTable to store the data
                 dt = new DataTable();
 
-                // Menggunakan MySqlCommand untuk menjalankan query
                 using (cmd = new MySqlCommand(query, conn))
                 {
-                    // Membuka koneksi ke database
+                    // Open the connection to the database if it's not already open
                     if (conn.State != ConnectionState.Open)
                     {
                         conn.Open();
                     }
 
-                    // Menggunakan MySqlDataAdapter untuk mengisi DataTable
+                    // Use MySqlDataAdapter to fill the DataTable
                     using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
                     {
                         adapter.Fill(dt);
                     }
                 }
 
-                // Menampilkan data ke DataGridView
+                // Display data in the DataGridView
                 dgvBarang.DataSource = dt;
 
-                // Menyembunyikan kolom barang_id (jika diperlukan)
+                // Hide the 'barang_id' column (if necessary)
                 if (dgvBarang.Columns["barang_id"] != null)
                 {
                     dgvBarang.Columns["barang_id"].Visible = false;
@@ -99,23 +98,117 @@ namespace proyekPV
                         Width = 100
                     };
 
-                    dgvBarang.Columns.Add(btnColumn); // Adds the button column to the rightmost side
+                    dgvBarang.Columns.Add(btnColumn);
                 }
+
+                // Hide rows with insufficient stock or fully added to the cart
+                HideUnavailableItems();
             }
             catch (Exception ex)
             {
-                // Menampilkan pesan error jika terjadi kesalahan
+                // Display error message if something goes wrong
                 MessageBox.Show("Error: " + ex.Message, "Load Barang", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
-                // Menutup koneksi jika masih terbuka
+                // Close the connection if it's still open
                 if (conn.State == ConnectionState.Open)
                 {
                     conn.Close();
                 }
             }
         }
+        private void HideUnavailableItems()
+        {
+            try
+            {
+                foreach (DataGridViewRow row in dgvBarang.Rows)
+                {
+                    string barangId = row.Cells["barang_id"].Value?.ToString();
+                    if (string.IsNullOrEmpty(barangId)) continue;
+
+                    int stockCount = GetStockCount(barangId);
+                    int cartCount = GetCartCount(barangId);
+
+                    // Hide the row if stock is 0 or if stock equals cart count
+                    if (stockCount <= 0 || stockCount == cartCount)
+                    {
+                        row.Visible = false;
+                    }
+                    else
+                    {
+                        row.Visible = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Hide Unavailable Items", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private int GetStockCount(string barangId)
+        {
+            try
+            {
+                string query = "SELECT jumlah_barang FROM barang WHERE barang_id = @id";
+
+                using (cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", barangId);
+
+                    if (conn.State != ConnectionState.Open)
+                    {
+                        conn.Open();
+                    }
+
+                    object result = cmd.ExecuteScalar();
+                    return result != null ? Convert.ToInt32(result) : 0;
+                }
+            }
+            catch
+            {
+                return 0;
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+        }
+        private int GetCartCount(string barangId)
+        {
+            try
+            {
+                string query = "SELECT SUM(barang_qty) FROM cart WHERE barang_id = @id";
+
+                using (cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", barangId);
+
+                    if (conn.State != ConnectionState.Open)
+                    {
+                        conn.Open();
+                    }
+
+                    object result = cmd.ExecuteScalar();
+                    return result != null ? Convert.ToInt32(result) : 0;
+                }
+            }
+            catch
+            {
+                return 0;
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+        }
+
 
 
 
@@ -150,7 +243,7 @@ namespace proyekPV
                     selectedValues[1] = row.Cells["nama_barang"].Value?.ToString() ?? ""; // Name
                     selectedValues[2] = row.Cells["kategori_barang"].Value?.ToString() ?? ""; // Category
                     selectedValues[3] = row.Cells["harga_barang"].Value?.ToString() ?? ""; // Price
-                    selectedValues[4] = row.Cells["jumlah_barang"].Value?.ToString() ?? ""; // Stock Quantity
+                    
 
                     return selectedValues;
                 }
@@ -377,10 +470,52 @@ namespace proyekPV
 
         private void btnBack_Click(object sender, EventArgs e)
         {
+            RemoveAllRows();
             this.Hide();
             RoleForm roleForm = new RoleForm();
             roleForm.ShowDialog();
             this.Close();
+            
+        }
+        private void RemoveAllRows()
+        {
+            try
+            {
+                // Query to delete all rows from the 'cart' table
+                string query = "DELETE FROM cart";
+
+                // Execute the query
+                using (cmd = new MySqlCommand(query, conn))
+                {
+                    // Open the connection if it's not already open
+                    if (conn.State != ConnectionState.Open)
+                    {
+                        conn.Open();
+                    }
+
+                    // Execute the command
+                    cmd.ExecuteNonQuery();
+
+                    // Show a success message
+                    MessageBox.Show("All items have been removed from the cart.", "Clear Cart", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+                // Reload the DataGridView to reflect the changes
+                LoadBarang();
+            }
+            catch (Exception ex)
+            {
+                // Display error message in case of an exception
+                MessageBox.Show("Error: " + ex.Message, "Remove All Rows", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                // Close the connection if it's still open
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
         }
 
         private void btnSimul_Click(object sender, EventArgs e)
