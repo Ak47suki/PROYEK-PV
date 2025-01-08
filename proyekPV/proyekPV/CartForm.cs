@@ -61,6 +61,10 @@ namespace proyekPV
                 {
                     dgvCart.Columns["barang_id"].Visible = false;
                 }
+
+                // Tambahkan kolom nomor
+                AddRowNumberColumn();
+
             }
             catch (Exception ex)
             {
@@ -76,6 +80,32 @@ namespace proyekPV
                 }
             }
         }
+
+        private void AddRowNumberColumn()
+        {
+            // Check if the "No" column already exists
+            if (!dgvCart.Columns.Contains("No"))
+            {
+                // Create a new column for row numbers
+                DataGridViewTextBoxColumn rowNumberColumn = new DataGridViewTextBoxColumn
+                {
+                    Name = "No",
+                    HeaderText = "No",
+                    ReadOnly = true,
+                    Width = 50 // Set column width (optional)
+                };
+
+                // Insert the column at the first position (index 0)
+                dgvCart.Columns.Insert(0, rowNumberColumn);
+            }
+
+            // Update row numbers
+            for (int i = 0; i < dgvCart.Rows.Count; i++)
+            {
+                dgvCart.Rows[i].Cells["No"].Value = (i + 1).ToString();
+            }
+        }
+
         private void RemoveOrReduceSelectedRow()
         {
             try
