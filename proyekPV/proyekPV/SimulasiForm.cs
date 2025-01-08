@@ -17,6 +17,7 @@ namespace proyekPV
             InitializeComponent();
             LoadBrand();
             LoadDataForComboBoxes();
+            ConfigureTextBoxRestrictions();
         }
 
         private void LoadBrand()
@@ -175,7 +176,7 @@ namespace proyekPV
         {
             if (comboBox.SelectedItem != null && int.TryParse(jumlahTextBox.Text, out int jumlah))
             {
-                string query = "SELECT harga_barang FROM barang WHERE nama_barang = @nama";
+                string query = "SELECT harga_barang, jumlah_barang FROM barang WHERE nama_barang = @nama";
                 try
                 {
                     using (cmd = new MySqlCommand(query, conn))
@@ -187,19 +188,29 @@ namespace proyekPV
                             conn.Open();
                         }
 
-                        object result = cmd.ExecuteScalar();
-
-                        if (result != null)
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
                         {
-                            int harga = Convert.ToInt32(result);
-                            totalTextBox.Text = (harga * jumlah).ToString(); // Tidak menggunakan format Rp. atau koma
-                            UpdateGrandTotal();
+                            if (reader.Read())
+                            {
+                                int harga = Convert.ToInt32(reader["harga_barang"]);
+                                int stok = Convert.ToInt32(reader["jumlah_barang"]);
+
+                                if (jumlah > stok)
+                                {
+                                    MessageBox.Show("Jumlah barang melebihi stok yang tersedia: " + stok);
+                                    jumlahTextBox.Text = stok.ToString(); // Set jumlah ke stok maksimum
+                                    jumlah = stok; // Update jumlah untuk kalkulasi
+                                }
+
+                                totalTextBox.Text = (harga * jumlah).ToString(); // Update total harga
+                                UpdateGrandTotal();
+                            }
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error calculating total: " + ex.Message);
+                    //MessageBox.Show("Error calculating total: " + ex.Message);
                 }
                 finally
                 {
@@ -210,6 +221,7 @@ namespace proyekPV
                 }
             }
         }
+
 
         private void UpdateGrandTotal()
         {
@@ -234,6 +246,53 @@ namespace proyekPV
                 return total;
             }
             return 0;
+        }
+
+        private void ConfigureTextBoxRestrictions()
+        {
+            // Restrict jumlah TextBox input
+            txtJmlProc.KeyPress += ValidateJumlahInput;
+            txtJmlProc.TextChanged += txtJmlProc_TextChanged;
+
+            txtJmlMobo.KeyPress += ValidateJumlahInput;
+            txtJmlMobo.TextChanged += txtJmlMobo_TextChanged;
+
+            txtJmlRAM.KeyPress += ValidateJumlahInput;
+            txtJmlRAM.TextChanged += txtJmlRAM_TextChanged;
+
+            txtJmlCasing.KeyPress += ValidateJumlahInput;
+            txtJmlCasing.TextChanged += txtJmlCasing_TextChanged;
+
+            txtJmlSSD.KeyPress += ValidateJumlahInput;
+            txtJmlSSD.TextChanged += txtJmlSSD_TextChanged;
+
+            txtJmlHDD.KeyPress += ValidateJumlahInput;
+            txtJmlHDD.TextChanged += txtJmlHDD_TextChanged;
+
+            txtJmlVGA.KeyPress += ValidateJumlahInput;
+            txtJmlVGA.TextChanged += txtJmlVGA_TextChanged;
+
+            txtJmlPSU.KeyPress += ValidateJumlahInput;
+            txtJmlPSU.TextChanged += txtJmlPSU_TextChanged;
+
+            // Set total TextBox to read-only
+            txtTotalproc.ReadOnly = true;
+            txtTotalMobo.ReadOnly = true;
+            txtTotalRAM.ReadOnly = true;
+            txtTotalCasing.ReadOnly = true;
+            txtTotalSSD.ReadOnly = true;
+            txtTotalHDD.ReadOnly = true;
+            txtTotalVGA.ReadOnly = true;
+            txtTotalPSu.ReadOnly = true;
+        }
+
+        private void ValidateJumlahInput(object sender, KeyPressEventArgs e)
+        {
+            // Hanya menerima angka dan backspace
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
 
         private void txtJmlProc_TextChanged(object sender, EventArgs e)
@@ -280,5 +339,123 @@ namespace proyekPV
         {
             this.Close();
         }
+
+        private void btnAddtoCart_Click(object sender, EventArgs e)
+        {
+            // Cek apakah semua kategori barang telah dipilih dan jumlahnya lebih dari 0
+            if (IsFormValid())
+            {
+                try
+                {
+                    // Tambahkan setiap barang ke Cart
+                    AddItemToCart(cmbProc, txtJmlProc);
+                    AddItemToCart(cmbMobo, txtJmlMobo);
+                    AddItemToCart(cmbRAM, txtJmlRAM);
+                    AddItemToCart(cmbCasing, txtJmlCasing);
+                    AddItemToCart(cmbSSD, txtJmlSSD);
+                    AddItemToCart(cmbHDD, txtJmlHDD);
+                    AddItemToCart(cmbVGA, txtJmlVGA);
+                    AddItemToCart(cmbPSU, txtJmlPSU);
+
+                    MessageBox.Show("Barang berhasil ditambahkan ke keranjang.");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error saat menambahkan barang ke keranjang: " + ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Pastikan semua kategori barang diisi dan jumlah lebih dari 0.");
+            }
+        }
+
+        private bool IsFormValid()
+        {
+            // Pastikan semua kategori sudah dipilih dan jumlah lebih dari 0
+            return (IsItemValid(cmbProc, txtJmlProc) &&
+                    IsItemValid(cmbMobo, txtJmlMobo) &&
+                    IsItemValid(cmbRAM, txtJmlRAM) &&
+                    IsItemValid(cmbCasing, txtJmlCasing) &&
+                    IsItemValid(cmbSSD, txtJmlSSD) &&
+                    IsItemValid(cmbHDD, txtJmlHDD) &&
+                    IsItemValid(cmbVGA, txtJmlVGA) &&
+                    IsItemValid(cmbPSU, txtJmlPSU));
+        }
+
+        private bool IsItemValid(ComboBox comboBox, TextBox jumlahTextBox)
+        {
+            return comboBox.SelectedItem != null && int.TryParse(jumlahTextBox.Text, out int jumlah) && jumlah > 0;
+        }
+
+        private void AddItemToCart(ComboBox comboBox, TextBox jumlahTextBox)
+        {
+            if (comboBox.SelectedItem != null && int.TryParse(jumlahTextBox.Text, out int jumlah) && jumlah > 0)
+            {
+                string itemName = comboBox.SelectedItem.ToString();
+                string query = "SELECT barang_id, harga_barang FROM barang WHERE nama_barang = @nama_barang";
+
+                try
+                {
+                    using (cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@nama_barang", itemName);
+
+                        if (conn.State != ConnectionState.Open)
+                        {
+                            conn.Open();
+                        }
+
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                string idBarang = reader["barang_id"].ToString();
+                                int hargaBarang = Convert.ToInt32(reader["harga_barang"]);
+
+                                reader.Close(); // Pastikan DataReader ditutup sebelum membuka koneksi lain
+
+                                // Membuka koneksi baru untuk INSERT
+                                using (var insertConn = new MySqlConnection(conn.ConnectionString))
+                                {
+                                    insertConn.Open();
+                                    string insertQuery = "INSERT INTO cart (Barang_nama, barang_qty, Barang_id, barang_harga) " +
+                                                         "VALUES (@nama_barang, @jumlah_barang, @barang_id, @harga_barang)";
+
+                                    using (MySqlCommand insertCmd = new MySqlCommand(insertQuery, insertConn))
+                                    {
+                                        insertCmd.Parameters.AddWithValue("@nama_barang", itemName);
+                                        insertCmd.Parameters.AddWithValue("@jumlah_barang", jumlah);
+                                        insertCmd.Parameters.AddWithValue("@barang_id", idBarang);
+                                        insertCmd.Parameters.AddWithValue("@harga_barang", hargaBarang);
+
+                                        insertCmd.ExecuteNonQuery(); // Menjalankan query INSERT
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error saat menambahkan barang ke keranjang: " + ex.Message);
+                }
+                finally
+                {
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Jumlah barang tidak valid.");
+            }
+        }
+
+
+
+
     }
 }

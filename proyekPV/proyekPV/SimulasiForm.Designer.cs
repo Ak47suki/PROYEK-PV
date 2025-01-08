@@ -98,6 +98,8 @@
             this.lblGrandtot = new System.Windows.Forms.Label();
             this.label44 = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Button();
+            this.label43 = new System.Windows.Forms.Label();
+            this.btnAddtoCart = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -735,11 +737,32 @@
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(586, 61);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(96, 16);
+            this.label43.TabIndex = 70;
+            this.label43.Text = "Jumlah barang";
+            // 
+            // btnAddtoCart
+            // 
+            this.btnAddtoCart.Location = new System.Drawing.Point(973, 645);
+            this.btnAddtoCart.Name = "btnAddtoCart";
+            this.btnAddtoCart.Size = new System.Drawing.Size(105, 29);
+            this.btnAddtoCart.TabIndex = 71;
+            this.btnAddtoCart.Text = "Add to Cart";
+            this.btnAddtoCart.UseVisualStyleBackColor = true;
+            this.btnAddtoCart.Click += new System.EventHandler(this.btnAddtoCart_Click);
+            // 
             // SimulasiForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1100, 686);
+            this.Controls.Add(this.btnAddtoCart);
+            this.Controls.Add(this.label43);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.label44);
             this.Controls.Add(this.lblGrandtot);
@@ -889,5 +912,7 @@
         private System.Windows.Forms.Label lblGrandtot;
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.Button btnAddtoCart;
     }
 }

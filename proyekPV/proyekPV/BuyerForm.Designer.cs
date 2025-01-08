@@ -70,6 +70,27 @@
             this.buttonSearch.UseVisualStyleBackColor = true;
             this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
+            // buttonCart
+            // 
+            this.buttonCart.Location = new System.Drawing.Point(1008, 590);
+            this.buttonCart.Name = "buttonCart";
+            this.buttonCart.Size = new System.Drawing.Size(88, 32);
+            this.buttonCart.TabIndex = 2;
+            this.buttonCart.Text = "Cart";
+            this.buttonCart.UseVisualStyleBackColor = true;
+            this.buttonCart.Click += new System.EventHandler(this.buttonCart_Click);
+            // 
+            // buttonAddCart
+            // 
+            this.buttonAddCart.Location = new System.Drawing.Point(700, 630);
+            this.buttonAddCart.Name = "buttonAddCart";
+            this.buttonAddCart.Size = new System.Drawing.Size(128, 32);
+            this.buttonAddCart.TabIndex = 2;
+            this.buttonAddCart.Text = "Add to Cart";
+            this.buttonAddCart.UseVisualStyleBackColor = true;
+            this.buttonAddCart.Visible = false;
+            this.buttonAddCart.Click += new System.EventHandler(this.buttonAddCart_Click);
+            // 
             // btnBack
             // 
             this.btnBack.Location = new System.Drawing.Point(1008, 630);
@@ -90,27 +111,6 @@
             this.btnSimul.UseVisualStyleBackColor = true;
             this.btnSimul.Click += new System.EventHandler(this.btnSimul_Click);
             // 
-            // buttonAddCart
-            // 
-            this.buttonAddCart.Location = new System.Drawing.Point( 700, 630);
-            this.buttonAddCart.Name = "buttonAddCart";
-            this.buttonAddCart.Size = new System.Drawing.Size(128, 32);
-            this.buttonAddCart.TabIndex = 2;
-            this.buttonAddCart.Text = "Add to Cart";
-            this.buttonAddCart.UseVisualStyleBackColor = true;
-            this.buttonAddCart.Click += new System.EventHandler(this.buttonAddCart_Click);
-            this.buttonAddCart.Visible = false;
-            // 
-            // buttonCart
-            // 
-            this.buttonCart.Location = new System.Drawing.Point(1008, 590);
-            this.buttonCart.Name = "buttonCart";
-            this.buttonCart.Size = new System.Drawing.Size(88, 32);
-            this.buttonCart.TabIndex = 2;
-            this.buttonCart.Text = "Cart";
-            this.buttonCart.UseVisualStyleBackColor = true;
-            this.buttonCart.Click += new System.EventHandler(this.buttonCart_Click);
-            // 
             // BuyerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -128,7 +128,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvBarang)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-            
+
         }
 
         #endregion

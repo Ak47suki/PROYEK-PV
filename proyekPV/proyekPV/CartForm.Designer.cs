@@ -46,32 +46,32 @@ namespace proyekPV
             // 
             this.dgvCart.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCart.Location = new System.Drawing.Point(8, 11);
-            this.dgvCart.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvCart.Location = new System.Drawing.Point(11, 14);
+            this.dgvCart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvCart.Name = "dgvCart";
             this.dgvCart.ReadOnly = true;
             this.dgvCart.RowHeadersVisible = false;
             this.dgvCart.RowHeadersWidth = 51;
             this.dgvCart.RowTemplate.Height = 24;
             this.dgvCart.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCart.Size = new System.Drawing.Size(510, 532);
+            this.dgvCart.Size = new System.Drawing.Size(680, 655);
             this.dgvCart.TabIndex = 0;
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(531, 33);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSearch.Location = new System.Drawing.Point(708, 41);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(125, 20);
+            this.txtSearch.Size = new System.Drawing.Size(165, 22);
             this.txtSearch.TabIndex = 1;
             this.txtSearch.Visible = false;
             // 
             // buttonSearch
             // 
-            this.buttonSearch.Location = new System.Drawing.Point(531, 56);
-            this.buttonSearch.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonSearch.Location = new System.Drawing.Point(708, 69);
+            this.buttonSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(66, 26);
+            this.buttonSearch.Size = new System.Drawing.Size(88, 32);
             this.buttonSearch.TabIndex = 2;
             this.buttonSearch.Text = "Search";
             this.buttonSearch.UseVisualStyleBackColor = true;
@@ -79,10 +79,10 @@ namespace proyekPV
             // 
             // buttonCart
             // 
-            this.buttonCart.Location = new System.Drawing.Point(750, 460);
-            this.buttonCart.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonCart.Location = new System.Drawing.Point(1000, 566);
+            this.buttonCart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonCart.Name = "buttonCart";
-            this.buttonCart.Size = new System.Drawing.Size(70, 25);
+            this.buttonCart.Size = new System.Drawing.Size(93, 31);
             this.buttonCart.TabIndex = 6;
             this.buttonCart.Text = "Checkout";
             this.buttonCart.UseVisualStyleBackColor = true;
@@ -90,21 +90,22 @@ namespace proyekPV
             // 
             // buttonAddCart
             // 
-            this.buttonAddCart.Location = new System.Drawing.Point(525, 512);
-            this.buttonAddCart.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonAddCart.Location = new System.Drawing.Point(700, 630);
+            this.buttonAddCart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonAddCart.Name = "buttonAddCart";
-            this.buttonAddCart.Size = new System.Drawing.Size(96, 26);
+            this.buttonAddCart.Size = new System.Drawing.Size(128, 32);
             this.buttonAddCart.TabIndex = 5;
             this.buttonAddCart.Text = "Add to Cart";
             this.buttonAddCart.UseVisualStyleBackColor = true;
             this.buttonAddCart.Visible = false;
+            this.buttonAddCart.Click += new System.EventHandler(this.buttonAddCart_Click);
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(750, 500);
-            this.btnBack.Margin = new System.Windows.Forms.Padding(2);
+            this.btnBack.Location = new System.Drawing.Point(1000, 615);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(69, 28);
+            this.btnBack.Size = new System.Drawing.Size(92, 34);
             this.btnBack.TabIndex = 3;
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = true;
@@ -112,10 +113,10 @@ namespace proyekPV
             // 
             // btnSimul
             // 
-            this.btnSimul.Location = new System.Drawing.Point(703, 23);
-            this.btnSimul.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSimul.Location = new System.Drawing.Point(937, 28);
+            this.btnSimul.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSimul.Name = "btnSimul";
-            this.btnSimul.Size = new System.Drawing.Size(107, 40);
+            this.btnSimul.Size = new System.Drawing.Size(143, 49);
             this.btnSimul.TabIndex = 4;
             this.btnSimul.Text = "hapus barang";
             this.btnSimul.UseVisualStyleBackColor = true;
@@ -132,17 +133,18 @@ namespace proyekPV
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(530, 465);
+            this.label1.Location = new System.Drawing.Point(707, 572);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 24);
+            this.label1.Size = new System.Drawing.Size(0, 16);
             this.label1.TabIndex = 7;
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // CartForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(839, 569);
+            this.ClientSize = new System.Drawing.Size(1119, 700);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSimul);
             this.Controls.Add(this.btnBack);
@@ -151,7 +153,7 @@ namespace proyekPV
             this.Controls.Add(this.buttonCart);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.dgvCart);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "CartForm";
             this.Text = "BuyerForm";
             ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).EndInit();
