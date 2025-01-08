@@ -80,6 +80,88 @@ namespace proyekPV
                 }
             }
         }
+        private void InsertIntoDtrans()
+        {
+            try
+            {
+                // Step 1: Get the last number from the database
+                string getLastDtransIdQuery = "SELECT MAX(dtrans_id) FROM dtrans";
+                int lastDtransNumber = 0;
+
+                using (cmd = new MySqlCommand(getLastDtransIdQuery, conn))
+                {
+                    if (conn.State != ConnectionState.Open)
+                    {
+                        conn.Open();
+                    }
+
+                    object result = cmd.ExecuteScalar();
+                    if (result != DBNull.Value && result != null)
+                    {
+                        string lastDtransId = result.ToString();
+                        // Extract the numeric part of the dtrans_id
+                        if (int.TryParse(lastDtransId.Replace("dtrans", ""), out int numericPart))
+                        {
+                            lastDtransNumber = numericPart;
+                        }
+                    }
+                }
+
+                // Increment the number only once per button press
+                string newDtransId = "dtrans" + (++lastDtransNumber);
+
+                // Step 2: Query to select barang_id and barang_qty from the cart table
+                string selectQuery = "SELECT barang_id, barang_qty FROM cart";
+
+                // Step 3: Query to insert data into the dtrans table
+                string insertQuery = "INSERT INTO dtrans (dtrans_id, barang_id, barang_qty) VALUES (@dtrans_id, @barang_id, @barang_qty)";
+
+                // Create a DataTable to store the barang_id and barang_qty values
+                DataTable dtCart = new DataTable();
+
+                using (cmd = new MySqlCommand(selectQuery, conn))
+                {
+                    // Fill DataTable with data from the cart table
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(dtCart);
+                    }
+                }
+
+                // Step 4: Insert data into dtrans using the same dtrans_id for all rows
+                foreach (DataRow row in dtCart.Rows)
+                {
+                    string barangId = row["barang_id"].ToString();
+                    int barangQty = Convert.ToInt32(row["barang_qty"]);
+
+                    using (cmd = new MySqlCommand(insertQuery, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@dtrans_id", newDtransId);
+                        cmd.Parameters.AddWithValue("@barang_id", barangId);
+                        cmd.Parameters.AddWithValue("@barang_qty", barangQty);
+
+                        cmd.ExecuteNonQuery(); // Execute the insert command
+                    }
+                }
+
+                MessageBox.Show($"Data successfully inserted into dtrans table with dtrans_id: {newDtransId}.",
+                    "Insert Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Insert Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+        }
+
+
+
 
         private void AddRowNumberColumn()
         {
@@ -233,6 +315,57 @@ namespace proyekPV
             BuyerForm buyerForm = new BuyerForm();
             buyerForm.ShowDialog();
             this.Close();
+        }
+        private void check_Click(object sender, EventArgs e)
+        {
+            InsertIntoDtrans();
+            MessageBox.Show("Item moved to cart.", "move Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            RemoveAllRows();
+            this.Hide();
+            RoleForm rol = new RoleForm();
+            rol.ShowDialog();
+            this.Close();
+
+        }
+        private void RemoveAllRows()
+        {
+            try
+            {
+                // Query to delete all rows from the 'cart' table
+                string query = "DELETE FROM cart";
+
+                // Execute the query
+                using (cmd = new MySqlCommand(query, conn))
+                {
+                    // Open the connection if it's not already open
+                    if (conn.State != ConnectionState.Open)
+                    {
+                        conn.Open();
+                    }
+
+                    // Execute the command
+                    cmd.ExecuteNonQuery();
+
+                    // Show a success message
+                    MessageBox.Show("All items have been removed from the cart.", "Clear Cart", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+                // Reload the DataGridView to reflect the changes
+                LoadBarang();
+            }
+            catch (Exception ex)
+            {
+                // Display error message in case of an exception
+                MessageBox.Show("Error: " + ex.Message, "Remove All Rows", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                // Close the connection if it's still open
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
         }
     }
 }

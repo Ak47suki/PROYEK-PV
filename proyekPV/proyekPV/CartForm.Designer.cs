@@ -86,6 +86,7 @@ namespace proyekPV
             this.buttonCart.TabIndex = 6;
             this.buttonCart.Text = "Checkout";
             this.buttonCart.UseVisualStyleBackColor = true;
+            this.buttonCart.Click += new System.EventHandler(this.check_Click);
             // 
             // buttonAddCart
             // 

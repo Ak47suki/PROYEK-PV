@@ -42,6 +42,10 @@ namespace proyekPV
             this.btnSimul = new System.Windows.Forms.Button();
             this.txtTotal = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.cmbtrans = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+
             //AdjustFormSizeAndLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).BeginInit();
             this.SuspendLayout();
@@ -50,7 +54,7 @@ namespace proyekPV
             // 
             this.dgvCart.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCart.Location = new System.Drawing.Point(8, 11);
+            this.dgvCart.Location = new System.Drawing.Point(8, 31);
             this.dgvCart.Margin = new System.Windows.Forms.Padding(2);
             this.dgvCart.Name = "dgvCart";
             this.dgvCart.ReadOnly = true;
@@ -63,12 +67,12 @@ namespace proyekPV
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(531, 33);
+            this.txtSearch.Location = new System.Drawing.Point(580, 420);
             this.txtSearch.Margin = new System.Windows.Forms.Padding(2);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(125, 20);
             this.txtSearch.TabIndex = 1;
-            this.txtSearch.Visible = false;
+            //this.txtSearch.Visible = false;
             // 
             // buttonSearch
             // 
@@ -89,7 +93,8 @@ namespace proyekPV
             this.buttonCart.Size = new System.Drawing.Size(107, 40);
             this.buttonCart.TabIndex = 6;
             this.buttonCart.Text = "BuatNota";
-            this.buttonCart.UseVisualStyleBackColor = true;
+            this.buttonCart.UseVisualStyleBackColor = true; 
+            this.buttonCart.Click += new System.EventHandler(this.bayar_Click);
             // 
             // buttonAddCart
             // 
@@ -101,6 +106,7 @@ namespace proyekPV
             this.buttonAddCart.Text = "Add to Cart";
             this.buttonAddCart.UseVisualStyleBackColor = true;
             this.buttonAddCart.Visible = false;
+           
             // 
             // btnBack
             // 
@@ -135,11 +141,39 @@ namespace proyekPV
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(700, 475);
+            this.label1.Location = new System.Drawing.Point(720, 400);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 24);
             this.label1.TabIndex = 7;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(720, 450);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(0, 24);
+            this.label2.TabIndex = 11;
             //this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(720, 420);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(0, 24);
+            this.label3.TabIndex = 11; 
+            this.txtSearch.KeyDown += txtSearch_KeyDown;
+
+            // 
+            // cmbtrans
+            // 
+            this.cmbtrans.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbtrans.FormattingEnabled = true;
+            this.cmbtrans.Location = new System.Drawing.Point(30, 0);
+            this.cmbtrans.Name = "cmbtans";
+            this.cmbtrans.Size = new System.Drawing.Size(400, 24);
+            this.cmbtrans.TabIndex = 8; 
+            this.cmbtrans.Click += cmbtrans_SelectedIndexChanged;
             // 
             // CartForm
             // 
@@ -147,6 +181,8 @@ namespace proyekPV
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(839, 569);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnSimul);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.buttonSearch);
@@ -154,6 +190,7 @@ namespace proyekPV
             this.Controls.Add(this.buttonCart);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.dgvCart);
+            this.Controls.Add(this.cmbtrans);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "CartForm";
             this.Text = "BuyerForm";
@@ -172,5 +209,8 @@ namespace proyekPV
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Button btnSimul;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cmbtrans;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
