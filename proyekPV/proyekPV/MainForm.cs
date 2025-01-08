@@ -47,9 +47,9 @@ namespace proyekPV
         private void buatTransaksiToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
-            CartForm cary = new CartForm();
-            cary.ShowDialog();
-            this.Close();
+            TransaksiForm transaksi = new TransaksiForm();
+            transaksi.ShowDialog();
+            this.Show();
         }
 
         private void historyTransaksiToolStripMenuItem_Click(object sender, EventArgs e)

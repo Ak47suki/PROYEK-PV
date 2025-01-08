@@ -1,7 +1,7 @@
 ﻿
 namespace proyekPV
 {
-    partial class CartForm
+    partial class TransaksiForm
     {
         /// <summary>
         /// Required designer variable.
@@ -20,16 +20,19 @@ namespace proyekPV
             }
             base.Dispose(disposing);
         }
-        
-           
-    #region Windows Form Designer generated code
 
-    /// <summary>
-    /// Required method for Designer support - do not modify
-    /// the contents of this method with the code editor.
-    /// </summary>
-    private void InitializeComponent()
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Text = "TransaksiForm";
             this.dgvCart = new System.Windows.Forms.DataGridView();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.buttonSearch = new System.Windows.Forms.Button();
@@ -39,6 +42,7 @@ namespace proyekPV
             this.btnSimul = new System.Windows.Forms.Button();
             this.txtTotal = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            //AdjustFormSizeAndLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,12 +83,12 @@ namespace proyekPV
             // 
             // buttonCart
             // 
-            this.buttonCart.Location = new System.Drawing.Point(750, 460);
+            this.buttonCart.Location = new System.Drawing.Point(720, 500);
             this.buttonCart.Margin = new System.Windows.Forms.Padding(2);
             this.buttonCart.Name = "buttonCart";
-            this.buttonCart.Size = new System.Drawing.Size(70, 25);
+            this.buttonCart.Size = new System.Drawing.Size(107, 40);
             this.buttonCart.TabIndex = 6;
-            this.buttonCart.Text = "Checkout";
+            this.buttonCart.Text = "BuatNota";
             this.buttonCart.UseVisualStyleBackColor = true;
             // 
             // buttonAddCart
@@ -100,18 +104,18 @@ namespace proyekPV
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(750, 500);
+            this.btnBack.Location = new System.Drawing.Point(20, 500);
             this.btnBack.Margin = new System.Windows.Forms.Padding(2);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(69, 28);
             this.btnBack.TabIndex = 3;
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = true;
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            //this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // btnSimul
             // 
-            this.btnSimul.Location = new System.Drawing.Point(703, 23);
+            this.btnSimul.Location = new System.Drawing.Point(600, 500);
             this.btnSimul.Margin = new System.Windows.Forms.Padding(2);
             this.btnSimul.Name = "btnSimul";
             this.btnSimul.Size = new System.Drawing.Size(107, 40);
@@ -122,7 +126,7 @@ namespace proyekPV
             // 
             // txtTotal
             // 
-            this.txtTotal.Location = new System.Drawing.Point(500, 630);
+            this.txtTotal.Location = new System.Drawing.Point(650, 630);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Size = new System.Drawing.Size(165, 220);
             this.txtTotal.TabIndex = 7;
@@ -131,11 +135,11 @@ namespace proyekPV
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(530, 465);
+            this.label1.Location = new System.Drawing.Point(700, 475);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 24);
             this.label1.TabIndex = 7;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            //this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // CartForm
             // 
@@ -156,7 +160,6 @@ namespace proyekPV
             ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion

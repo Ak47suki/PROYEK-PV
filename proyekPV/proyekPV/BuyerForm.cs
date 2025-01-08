@@ -25,6 +25,7 @@ namespace proyekPV
             InitializeComponent();
             LoadBarang();
             dgvBarang.CellFormatting += dgvBarang_CellFormatting;
+            dgvBarang.CellClick += dgvBarang_CellClick;
         }
 
         private void BuyerForm_Load(object sender, EventArgs e)
@@ -32,12 +33,30 @@ namespace proyekPV
 
         }
 
+        private void dgvBarang_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Check if the clicked cell is a button column
+            if (e.ColumnIndex == dgvBarang.Columns["AddToCart"].Index && e.RowIndex >= 0)
+            {
+                // Example: A HashSet containing IDs of items already in the cart
+                HashSet<string> excludedIds = new HashSet<string>(); // This can be dynamically generated if needed
+
+                // Get the selected item from the clicked row
+                dgvBarang.CurrentCell = dgvBarang.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                string[] selectedBarang = GetSelectedBarang(excludedIds);
+
+                if (selectedBarang != null)
+                {
+                    buttonAddCart_Click(this, EventArgs.Empty);
+                }
+            }
+        }
 
         private void LoadBarang()
         {
             try
             {
-                // Query untuk mengambil semua data dari tabel barang termasuk kategori
+                // Query untuk mengambil semua data dari tabel barang
                 string query = "SELECT barang_id, nama_barang, kategori_barang, harga_barang, jumlah_barang FROM barang";
 
                 // Membuat DataTable untuk menyimpan data
@@ -67,6 +86,21 @@ namespace proyekPV
                 {
                     dgvBarang.Columns["barang_id"].Visible = false;
                 }
+
+                // Add a button column to the rightmost side of the DataGridView
+                if (dgvBarang.Columns["AddToCart"] == null)
+                {
+                    DataGridViewButtonColumn btnColumn = new DataGridViewButtonColumn
+                    {
+                        HeaderText = "Action",
+                        Text = "Add to Cart",
+                        Name = "AddToCart",
+                        UseColumnTextForButtonValue = true,
+                        Width = 100
+                    };
+
+                    dgvBarang.Columns.Add(btnColumn); // Adds the button column to the rightmost side
+                }
             }
             catch (Exception ex)
             {
@@ -86,51 +120,55 @@ namespace proyekPV
 
 
 
+
+
         private string[] GetSelectedBarang(HashSet<string> excludedIds)
-{
-    try
-    {
-        if (dgvBarang.CurrentRow != null)
         {
-            // Create an array to store the values
-            string[] selectedValues = new string[dgvBarang.Columns.Count];
-
-            // Get values from the selected row
-            DataGridViewRow row = dgvBarang.CurrentRow;
-
-            // Assume the ID column is at index 0 (modify based on your DataGridView structure)
-            string selectedId = row.Cells[0].Value?.ToString();
-
-            // Check if the ID is in the excluded list
-            if (excludedIds != null && excludedIds.Contains(selectedId))
+            try
             {
-                MessageBox.Show("This item is already in the cart!", "Duplicate Item",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (dgvBarang.CurrentRow != null)
+                {
+                    // Create an array to store the values
+                    string[] selectedValues = new string[dgvBarang.Columns.Count - 1]; // Exclude button column
+
+                    // Get values from the selected row
+                    DataGridViewRow row = dgvBarang.CurrentRow;
+
+                    // Get the ID from the first column (adjust index as necessary)
+                    string selectedId = row.Cells["barang_id"].Value?.ToString();
+
+                    // Check if the ID is in the excluded list
+                    if (excludedIds != null && excludedIds.Contains(selectedId))
+                    {
+                        MessageBox.Show("This item is already in the cart!", "Duplicate Item",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return null;
+                    }
+
+                    // Extract data from specific columns based on their index
+                    selectedValues[0] = row.Cells["barang_id"].Value?.ToString() ?? ""; // ID
+                    selectedValues[1] = row.Cells["nama_barang"].Value?.ToString() ?? ""; // Name
+                    selectedValues[2] = row.Cells["kategori_barang"].Value?.ToString() ?? ""; // Category
+                    selectedValues[3] = row.Cells["harga_barang"].Value?.ToString() ?? ""; // Price
+                    selectedValues[4] = row.Cells["jumlah_barang"].Value?.ToString() ?? ""; // Stock Quantity
+
+                    return selectedValues;
+                }
+                else
+                {
+                    MessageBox.Show("Please select a row first!", "Selection Error",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Get Selected Barang",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
-
-            // Loop through each column and get its value
-            for (int i = 0; i < dgvBarang.Columns.Count; i++)
-            {
-                selectedValues[i] = row.Cells[i].Value?.ToString() ?? "";
-            }
-
-            return selectedValues;
         }
-        else
-        {
-            MessageBox.Show("Please select a row first!", "Selection Error",
-                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            return null;
-        }
-    }
-    catch (Exception ex)
-    {
-        MessageBox.Show("Error: " + ex.Message, "Get Selected Barang",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-        return null;
-    }
-}
+
 
 
         // Example usage - you can call this method when you need the selected values

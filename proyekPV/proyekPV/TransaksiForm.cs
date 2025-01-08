@@ -8,16 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-
 namespace proyekPV
 {
-    public partial class CartForm : Form
+    public partial class TransaksiForm : Form
     {
         MySqlConnection conn;
         MySqlCommand cmd;
         DataTable dt;
-        public CartForm()
+        public TransaksiForm()
         {
+
             Connection.openConn();
             conn = Connection.getConn();
 
@@ -27,55 +27,78 @@ namespace proyekPV
             dgvCart.CellFormatting += dgvCart_CellFormatting;
 
         }
+
         private void LoadBarang()
         {
             try
             {
-                // Query untuk mengambil semua data dari tabel barang
+                // Query to retrieve all data from the 'cart' table
                 string query = "SELECT * FROM cart";
 
-                // Membuat DataTable untuk menyimpan data
+                // Create a DataTable to store the data
                 dt = new DataTable();
 
-                // Menggunakan MySqlCommand untuk menjalankan query
                 using (cmd = new MySqlCommand(query, conn))
                 {
-                    // Membuka koneksi ke database
+                    // Open the connection to the database if it's not already open
                     if (conn.State != ConnectionState.Open)
                     {
                         conn.Open();
                     }
 
-                    // Menggunakan MySqlDataAdapter untuk mengisi DataTable
+                    // Use MySqlDataAdapter to fill the DataTable
                     using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
                     {
                         adapter.Fill(dt);
                     }
                 }
 
-                // Menampilkan data ke DataGridView
+                // Display data in the DataGridView
                 dgvCart.DataSource = dt;
 
-                // Menyembunyikan kolom barang_id
+                // Hide the 'barang_id' column
                 if (dgvCart.Columns["barang_id"] != null)
                 {
                     dgvCart.Columns["barang_id"].Visible = false;
                 }
+
+                // Adjust the DataGridView size to match its content
+                AdjustDataGridViewSize();
             }
             catch (Exception ex)
             {
-                // Menampilkan pesan error jika terjadi kesalahan
+                // Display error message if something goes wrong
                 MessageBox.Show("Error: " + ex.Message, "Load Barang", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
-                // Menutup koneksi jika masih terbuka
+                // Close the connection if it's still open
                 if (conn.State == ConnectionState.Open)
                 {
                     conn.Close();
                 }
             }
         }
+
+        private void AdjustDataGridViewSize()
+        {
+            // Minimum height for the DataGridView
+            const int minHeight = 100;
+
+            // Calculate the total height required for the rows
+            int totalRowHeight = dgvCart.Rows.Count * dgvCart.RowTemplate.Height;
+
+            // Add the height of the column header
+            int totalHeight = totalRowHeight + dgvCart.ColumnHeadersHeight;
+
+            // Ensure the height doesn't exceed the form or container height
+            int maxHeight = this.ClientSize.Height - dgvCart.Location.Y - 10; // 10 for padding
+            dgvCart.Height = Math.Min(Math.Max(totalHeight, minHeight), maxHeight);
+
+            // Adjust the width to fill the parent container
+            dgvCart.Width = this.ClientSize.Width - dgvCart.Location.X - 10; // 10 for padding
+        }
+
         private void RemoveOrReduceSelectedRow()
         {
             try
@@ -156,11 +179,6 @@ namespace proyekPV
                     e.FormattingApplied = true;    // Indicate that formatting has been applied
                 }
             }
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
         private void UpdateTotalHarga()
         {

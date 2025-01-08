@@ -72,7 +72,7 @@
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(1015, 686);
+            this.btnBack.Location = new System.Drawing.Point(1008, 630);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(92, 35);
             this.btnBack.TabIndex = 3;
@@ -99,10 +99,11 @@
             this.buttonAddCart.Text = "Add to Cart";
             this.buttonAddCart.UseVisualStyleBackColor = true;
             this.buttonAddCart.Click += new System.EventHandler(this.buttonAddCart_Click);
+            this.buttonAddCart.Visible = false;
             // 
             // buttonCart
             // 
-            this.buttonCart.Location = new System.Drawing.Point(1008, 650);
+            this.buttonCart.Location = new System.Drawing.Point(1008, 590);
             this.buttonCart.Name = "buttonCart";
             this.buttonCart.Size = new System.Drawing.Size(88, 32);
             this.buttonCart.TabIndex = 2;

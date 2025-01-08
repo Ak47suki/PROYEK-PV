@@ -63,3 +63,25 @@ E:\20. Kuliah semester 7\ProyekPV\PROYEK-PV\proyekPV\proyekPV\obj\Debug\proyekPV
 E:\20. Kuliah semester 7\ProyekPV\PROYEK-PV\proyekPV\proyekPV\obj\Debug\proyekPV.csproj.CopyComplete
 E:\20. Kuliah semester 7\ProyekPV\PROYEK-PV\proyekPV\proyekPV\obj\Debug\proyekPV.exe
 E:\20. Kuliah semester 7\ProyekPV\PROYEK-PV\proyekPV\proyekPV\obj\Debug\proyekPV.pdb
+C:\Users\User\Documents\GitHub\PROYEK-PV\proyekPV\proyekPV\bin\Debug\proyekPV.exe.config
+C:\Users\User\Documents\GitHub\PROYEK-PV\proyekPV\proyekPV\bin\Debug\proyekPV.exe
+C:\Users\User\Documents\GitHub\PROYEK-PV\proyekPV\proyekPV\bin\Debug\proyekPV.pdb
+C:\Users\User\Documents\GitHub\PROYEK-PV\proyekPV\proyekPV\bin\Debug\System.Memory.dll
+C:\Users\User\Documents\GitHub\PROYEK-PV\proyekPV\proyekPV\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\User\Documents\GitHub\PROYEK-PV\proyekPV\proyekPV\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\User\Documents\GitHub\PROYEK-PV\proyekPV\proyekPV\bin\Debug\System.Buffers.dll
+C:\Users\User\Documents\GitHub\PROYEK-PV\proyekPV\proyekPV\bin\Debug\MySql.Data.xml
+C:\Users\User\Documents\GitHub\PROYEK-PV\proyekPV\proyekPV\obj\Debug\proyekPV.csproj.AssemblyReference.cache
+C:\Users\User\Documents\GitHub\PROYEK-PV\proyekPV\proyekPV\obj\Debug\proyekPV.BarangForm.resources
+C:\Users\User\Documents\GitHub\PROYEK-PV\proyekPV\proyekPV\obj\Debug\proyekPV.BuyerForm.resources
+C:\Users\User\Documents\GitHub\PROYEK-PV\proyekPV\proyekPV\obj\Debug\proyekPV.CartForm.resources
+C:\Users\User\Documents\GitHub\PROYEK-PV\proyekPV\proyekPV\obj\Debug\proyekPV.LoginForm.resources
+C:\Users\User\Documents\GitHub\PROYEK-PV\proyekPV\proyekPV\obj\Debug\proyekPV.MainForm.resources
+C:\Users\User\Documents\GitHub\PROYEK-PV\proyekPV\proyekPV\obj\Debug\proyekPV.Properties.Resources.resources
+C:\Users\User\Documents\GitHub\PROYEK-PV\proyekPV\proyekPV\obj\Debug\proyekPV.RoleForm.resources
+C:\Users\User\Documents\GitHub\PROYEK-PV\proyekPV\proyekPV\obj\Debug\proyekPV.SimulasiForm.resources
+C:\Users\User\Documents\GitHub\PROYEK-PV\proyekPV\proyekPV\obj\Debug\proyekPV.csproj.GenerateResource.cache
+C:\Users\User\Documents\GitHub\PROYEK-PV\proyekPV\proyekPV\obj\Debug\proyekPV.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\GitHub\PROYEK-PV\proyekPV\proyekPV\obj\Debug\proyekPV.csproj.CopyComplete
+C:\Users\User\Documents\GitHub\PROYEK-PV\proyekPV\proyekPV\obj\Debug\proyekPV.exe
+C:\Users\User\Documents\GitHub\PROYEK-PV\proyekPV\proyekPV\obj\Debug\proyekPV.pdb
